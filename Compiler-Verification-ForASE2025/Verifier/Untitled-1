@@ -1,0 +1,12 @@
+[
+    (= |Square[0].in| |Pythagoras[0].a|), 
+    (= |Square[1].in| |Pythagoras[0].b|), 
+    (= |Pythagoras[0].a2| |Square[0].out|), 
+    (= |Pythagoras[0].b2| |Square[1].out|), 
+    (= |Pythagoras[0].c2| 
+        (ff.add |Pythagoras[0].a2| |Pythagoras[0].b2|)), 
+    (= |Square[0].out| (ff.mul |Square[0].in| |Square[0].in|)), 
+    (= |Square[1].out| (ff.mul |Square[1].in| |Square[1].in|))
+]
+
+

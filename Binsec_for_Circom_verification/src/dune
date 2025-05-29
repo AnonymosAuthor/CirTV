@@ -1,0 +1,47 @@
+(include_subdirs unqualified)
+
+(executable
+ (public_name binsec)
+ (package binsec)
+ (name main)
+ (modules main)
+ (flags
+  (:standard -open Binsec))
+ (libraries
+  binsec
+  libparser
+  sse
+  bbsse
+  dtrace
+  armv7decoder
+  amd64decoder
+  armv8decoder
+  ppc64decoder))
+
+(library
+ (public_name binsec)
+ (modules
+  (:standard \ main))
+ (modules_without_implementation
+  loader_sigs
+  loader_types
+  sigs
+  smtlib
+  x86Types)
+ (library_flags
+  (:standard -linkall))
+ (flags
+  (:standard -w -3))
+ (libraries unix str bigarray ocamlgraph zarith dune-site dune-site.plugins)
+ (foreign_stubs
+  (language c)
+  (names :standard)))
+
+(generate_sites_module
+ (module runtime)
+ (sites binsec))
+
+(generate_sites_module
+ (module plugins)
+ (plugins
+  (binsec plugins)))
